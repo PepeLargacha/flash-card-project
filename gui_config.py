@@ -67,6 +67,7 @@ class MyGui(Tk):
 
     def initialize_language(self):
         self.grab_data()
+        print(len(self.words_index))
         self.text.grid_forget()
         self.french.grid_forget()
         self.flashcard = FlashCard(self)
@@ -97,5 +98,5 @@ class MyGui(Tk):
     def finalize(self):
         new_data = self.data.loc[self.words_index]
         new_data.reset_index()
-        new_data.to_csv(f"{self.language.lower()}_words_to_learn.csv", index=False)
+        new_data.to_csv(f"data/{self.language.lower()}_words_to_learn.csv", index=False)
         self.destroy()
